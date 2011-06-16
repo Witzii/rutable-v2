@@ -1,0 +1,114 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.sourceforge.travelingsales.osmnavigation</groupId>
+  <artifactId>osmNavigation</artifactId>
+  <packaging>jar</packaging>
+  <version>2.3.10-SNAPSHOT</version>
+  <name>TravelingSalesman - osmNavigation</name>
+  <url>http://travelingsales.sourceforge.net</url>
+  <description>osmNavigation is a library for writing navugation and route-finding -applications. It is based on libOSM.</description>
+
+  <scm>
+    <connection>scm:svn:http://travelingsales.svn.sourceforge.net/svnroot/travelingsales/osmnavigation</connection>
+    <developerConnection>scm:svn:https://travelingsales.svn.sourceforge.net/svnroot/travelingsales/osmnavigation</developerConnection>
+    <tag>HEAD</tag>
+    <url>http://travelingsales.svn.sourceforge.net/svnroot/travelingsales/osmnavigation</url>
+  </scm>
+
+  <parent>
+    <groupId>net.sourceforge.travelingsales.all</groupId>
+    <artifactId>all</artifactId>
+    <version>2.3.10-SNAPSHOT</version>
+    <relativePath>../maven_all/pom.xml</relativePath>
+  </parent>
+
+  <build>
+    <!-- stay compatible with the non-maven directory-layout  -->
+    <sourceDirectory>${basedir}/src</sourceDirectory>
+    <scriptSourceDirectory>${basedir}/scripts</scriptSourceDirectory>
+    <testSourceDirectory>${basedir}/test/unit</testSourceDirectory>
+    <outputDirectory>${basedir}/classes</outputDirectory>
+    <testOutputDirectory>${basedir}/classes.tests</testOutputDirectory>
+
+    <resources>
+      <resource>
+        <targetPath></targetPath>
+        <filtering>false</filtering>
+        <directory>${basedir}/src</directory>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+    </resources>
+
+    <!-- change default-config to support java1.5 -annotations  -->
+    <plugins>
+     <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <version>2.0.2</version>
+      <configuration>
+        <source>1.5</source>
+        <target>1.5</target>
+      </configuration>
+     </plugin>
+    </plugins>
+
+  </build>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.4</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>net.sourceforge.travelingsales.libosm</groupId>
+      <artifactId>libosm</artifactId>
+      <version>2.3.10-SNAPSHOT</version>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+
+    <!-- rxts for serial communication -->
+    <dependency>
+      <groupId>rxtx</groupId>
+      <artifactId>rxtx</artifactId>
+      <version>1.0</version>
+      <type>jar</type>
+      <scope>system</scope>
+      <optional>yes</optional> <!-- programs depending on us do not allways need this -->
+       <systemPath>${basedir}/lib/RXTXcomm.jar</systemPath>
+    </dependency>
+
+  </dependencies>
+
+  <!--  -->
+  <distributionManagement>
+    <site>
+      <id>website</id>
+      <url>scp://marcuswolschon@shell.sourceforge.net/home/groups/t/tr/travelingsales/htdocs/osmNavigation</url>
+    </site>
+  </distributionManagement>
+
+ <licenses>
+  <license>
+    <name>General Public Licence (GPL)</name>
+    <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+    <distribution>repo</distribution>
+    <comments>GPL Version 3 or newer</comments>
+  </license>
+ </licenses>
+
+ <issueManagement>
+  <system>SourceForge</system>
+  <url>http://sourceforge.net/tracker/?group_id%3D203597&amp;atid%3D986231</url>
+ </issueManagement>
+
+</project>
